@@ -5,9 +5,28 @@ html
     title= title
     link(href='/css/normalize.css', rel='stylesheet')
     link(href='/css/buttons.css', rel='stylesheet')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
     link(href='/less/app.css', rel='stylesheet')
   body
-    block content
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          a.navbar-brand Study Buddy
+
+        .nav.navbar-form.navbar-right
+          #login-container.form-group
+            
+        #user.nav.navbar-right
+          a.navbar-brand
+    #page-container
+      .row
+        .col-md-1
+          #menu-container
+        .col-md-10
+          .well
+            #content-container
+        .col-md-1
+          #dashboard-container
 
     script(src='/js/vendor/jquery-2.1.1.js')
     script(src='/js/vendor/lodash-2.4.1.js')
@@ -16,6 +35,7 @@ html
     script(src='/js/vendor/traceur.js')
     script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     script(src='/js/es6/compiled/main.js')
     script(src='/js/es6/compiled/sockets.js')
 

@@ -1,0 +1,9 @@
+if !user
+  input.form-control#email(type='email', placeholder='Username')
+  input.form-control#password(type='password', placeholder='Password')
+  button#login.button.button-small.button-primary Login
+if user
+  
+  button#logout.button.button-small.button-caution Logout
+
+script(src='/js/es6/compiled/login.js')

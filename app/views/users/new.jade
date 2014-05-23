@@ -1,0 +1,24 @@
+.jumbotron
+  .row
+    .col-md-4
+    .col-md-4
+      h1 Register
+      form.form#register
+        .form-group
+          label(for='email-input') Email
+          input#email-input.form-control(name='email', type='email', placeholder='Enter Email', required, style='width:400px')
+        .form-group
+          label(for='password-input') Password
+          input#password-input.form-control(name='password', type='password', placeholder='Enter Password', required, style='width:400px')
+        .form-group
+          .radio
+            label Student
+              input(type='radio', name='accType', value='student')
+          .radio
+            label Teacher
+              input(type='radio', name='accType', value='teacher')
+        .form-group
+          button.button.button-action#submit-registration Register
+    .col-md-4
+
+script(src='/js/es6/compiled/registration.js')

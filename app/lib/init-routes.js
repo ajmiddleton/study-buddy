@@ -1,3 +1,4 @@
+/* jshint unused:false */
 'use strict';
 
 var traceur = require('traceur');
@@ -15,9 +16,17 @@ module.exports = (req, res, next)=>{
 
 function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
+  var users = traceur.require(__dirname + '/../routes/users.js');
 
   app.get('/', dbg, home.index);
-  app.get('/help', dbg, home.help);
+
+  app.get('/users/new', dbg, users.new);
+  app.post('/users', dbg, users.create);
+  app.get('/login', dbg, users.renderLogin);
+  app.post('/login', dbg, users.login);
+  app.get('/logout', dbg, users.logout);
+
+
   console.log('Routes Loaded');
   fn();
 }
