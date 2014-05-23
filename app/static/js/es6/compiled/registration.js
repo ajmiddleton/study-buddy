@@ -7,6 +7,9 @@
     ajax('/users', 'post', data, (function(res) {
       if (res.status) {
         $('#login-container').empty().append(res.loginHTML);
+        ajax('/courses/new', 'get', null, (function(res) {
+          $('#content-container').empty().append(res);
+        }));
       }
     }), 'json');
     event.preventDefault();

@@ -3,7 +3,7 @@ if !user
   input.form-control#password(type='password', placeholder='Password')
   button#login.button.button-small.button-primary Login
 if user
-  
-  button#logout.button.button-small.button-caution Logout
+  a.navbar-brand= user.email
+  button#logout.button.button-small.button-caution(style='margin-top:10px;') Logout
 
 script(src='/js/es6/compiled/login.js')

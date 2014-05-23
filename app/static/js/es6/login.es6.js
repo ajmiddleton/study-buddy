@@ -11,6 +11,9 @@
     ajax('/logout', 'get', null, res=>{
       if(res.status){
         $('#login-container').empty().append(res.loginHTML);
+        ajax('/users/new', 'get', null, res=>{
+          $('#content-container').empty().append(res);
+        });
       }
     }, 'json');
   }
@@ -22,6 +25,9 @@
     ajax('/login', 'post', {email:email, password:password}, res=>{
       if(res.status){
         $('#login-container').empty().append(res.loginHTML);
+        ajax('/courses', 'get', null, res=>{
+          $('#content-container').empty().append(res);
+        });
       }
     }, 'json');
   }

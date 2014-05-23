@@ -13,6 +13,9 @@
     ajax('/users', 'post', data, res=>{
       if(res.status){
         $('#login-container').empty().append(res.loginHTML);
+        ajax('/courses/new', 'get', null, res=>{
+          $('#content-container').empty().append(res);
+        });
       }
     }, 'json');
 
