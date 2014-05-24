@@ -12,10 +12,17 @@ class Course{
     courses.save(c, ()=>fn(c));
   }
 
-  static findByUser(userId, fn){
+  static findByTeacher(userId, fn){
     userId = Mongo.ObjectID(userId);
     courses.find({teacherId:userId}).toArray((err,records)=>{
       fn(records);
+    });
+  }
+
+  static findById(courseId, fn){
+    courseId = Mongo.ObjectID(courseId);
+    courses.findOne({_id:courseId}, (e, course)=>{
+      fn(course);
     });
   }
 }

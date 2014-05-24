@@ -8,15 +8,21 @@ exports.new = (req, res)=>{
 };
 
 exports.index = (req, res)=>{
-  Course.findByUser(req.session.userId, courses=>{
+  Course.findByTeacher(req.session.userId, courses=>{
     res.render('courses/index', {courses:courses});
   });
 };
 
 exports.create = (req, res)=>{
   Course.create(req.session.userId, req.body.name, ()=>{
-    Course.findByUser(req.session.userId, courses=>{
+    Course.findByTeacher(req.session.userId, courses=>{
       res.render('courses/index', {courses:courses});
     });
+  });
+};
+
+exports.show = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/show', {course:course});
   });
 };
