@@ -5,6 +5,9 @@ class Course{
   constructor(teacherId, name){
     this.teacherId = Mongo.ObjectID(teacherId);
     this.name = name;
+    this.studentIds = [];
+    this.testIds = [];
+    this.videos = [];
   }
 
   static create(teacherId, name, fn){
@@ -12,9 +15,16 @@ class Course{
     courses.save(c, ()=>fn(c));
   }
 
-  static findByTeacher(userId, fn){
-    userId = Mongo.ObjectID(userId);
-    courses.find({teacherId:userId}).toArray((err,records)=>{
+  static findByTeacher(teacherId, fn){
+    teacherId = Mongo.ObjectID(teacherId);
+    courses.find({teacherId:teacherId}).toArray((err,records)=>{
+      fn(records);
+    });
+  }
+
+  static findByStudent(studentId, fn){
+    studentId = Mongo.ObjectID(studentId);
+    courses.find({studentIds: {$elemMatch:studentId}}).toArray((err, records)=>{
       fn(records);
     });
   }
