@@ -16,7 +16,6 @@ exports.index = (req, res)=>{
 exports.create = (req, res)=>{
   Course.create(req.session.userId, req.body.name, ()=>{
     Course.findByUser(req.session.userId, courses=>{
-      console.log(courses);
       res.render('courses/index', {courses:courses});
     });
   });

@@ -1,2 +1,3 @@
 each course in courses
-  h1= course.name
+  h1
+   a.course(data-id='#{course._id}') #{course.name}
