@@ -7,7 +7,7 @@ exports.new = (req, res)=>{
   res.render('courses/new', {title: 'New Course'});
 };
 
-exports.show = (req, res)=>{
+exports.index = (req, res)=>{
   Course.findByUser(req.session.userId, courses=>{
     res.render('courses/index', {courses:courses});
   });

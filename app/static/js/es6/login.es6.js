@@ -25,7 +25,7 @@
     ajax('/login', 'post', {email:email, password:password}, res=>{
       if(res.status){
         $('#login-container').empty().append(res.loginHTML);
-        ajax('/courses', 'get', null, res=>{
+        ajax('/courses/new', 'get', null, res=>{
           $('#content-container').empty().append(res);
         });
         renderMenu();

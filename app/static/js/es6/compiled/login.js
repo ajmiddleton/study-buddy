@@ -21,7 +21,7 @@
     }, (function(res) {
       if (res.status) {
         $('#login-container').empty().append(res.loginHTML);
-        ajax('/courses', 'get', null, (function(res) {
+        ajax('/courses/new', 'get', null, (function(res) {
           $('#content-container').empty().append(res);
         }));
         renderMenu();

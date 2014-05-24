@@ -29,7 +29,7 @@ function load(app, fn){
   app.get('/menu', dbg, users.renderMenu);
 
   app.get('/courses/new', dbg, courses.new);
-  app.get('/courses', dbg, courses.show);
+  app.get('/courses', dbg, courses.index);
   app.post('/courses', dbg, courses.create);
 
 
