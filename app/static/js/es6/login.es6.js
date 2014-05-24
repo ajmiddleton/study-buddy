@@ -13,6 +13,7 @@
         $('#login-container').empty().append(res.loginHTML);
         ajax('/users/new', 'get', null, res=>{
           $('#content-container').empty().append(res);
+          $('#menu-container').empty();
         });
       }
     }, 'json');
