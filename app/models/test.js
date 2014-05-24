@@ -36,3 +36,5 @@ class Test{
     tests.save(t, ()=>fn(t));
   }
 }
+
+module.exports = Test;
