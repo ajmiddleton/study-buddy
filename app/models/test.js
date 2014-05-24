@@ -4,8 +4,9 @@ var tests = global.nss.db.collection('tests');
 var Mongo = require('mongodb');
 
 class Test{
-  constructor(teacherId, tags){
+  constructor(teacherId, courseId, tags){
     this.teacherId = teacherId;
+    this.courseId = courseId;
     this.tags = tags;
   }
 
@@ -19,6 +20,13 @@ class Test{
   static findByTeacher(teacherId, fn){
     teacherId = Mongo.ObjectID(teacherId);
     tests.find({teacherId:teacherId}).toArray((e, records)=>{
+      fn(records);
+    });
+  }
+
+  static findByCourse(courseId, fn){
+    courseId = Mongo.ObjectID(courseId);
+    tests.find({courseId:courseId}).toArray((e, records)=>{
       fn(records);
     });
   }

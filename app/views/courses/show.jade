@@ -1,5 +1,6 @@
-h1= course.name
+h1#course(data-id='#{course._id}')= course.name
 
+button#course-add-video.button.button-action Add Video
 // Create a new Test
 //    -link to a new route that renders the test form jade partial
 //    -tests/new
@@ -8,3 +9,5 @@ h1= course.name
 //    -courses/newContent
 //    -'/courses/:courseId/content/new'
 // Add Students to the course
+
+script(src='/js/es6/compiled/courses-show.js')

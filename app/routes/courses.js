@@ -29,3 +29,10 @@ exports.show = (req, res)=>{
     res.render('courses/show', {course:course});
   });
 };
+
+exports.newVideo = (req, res)=>{
+  req.session.lastPage = `/courses/${req.params.courseId}/newVideo`;
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/newVideo', {course:course});
+  });
+};

@@ -33,6 +33,7 @@ function load(app, fn){
   app.get('/courses', dbg, courses.index);
   app.post('/courses', dbg, courses.create);
   app.get('/courses/:courseId', dbg, courses.show);
+  app.get('/courses/:courseId/newVideo', dbg, courses.newVideo);
 
 
   console.log('Routes Loaded');
