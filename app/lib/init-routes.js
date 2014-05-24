@@ -20,6 +20,7 @@ function load(app, fn){
   var courses = traceur.require(__dirname + '/../routes/courses.js');
 
   app.get('/', dbg, home.index);
+  app.get('/lastPage', dbg, home.lastPage);
 
   app.get('/users/new', dbg, users.new);
   app.post('/users', dbg, users.create);

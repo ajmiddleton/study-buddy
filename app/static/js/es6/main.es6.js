@@ -1,4 +1,4 @@
-/* exported ajax */
+/* exported ajax, renderMenu */
 
 (function(){
   'use strict';
@@ -6,8 +6,21 @@
   $(document).ready(init);
 
   function init(){
-    renderUsersNew();
+    getLastPage();
     renderLogin();
+  }
+
+  function getLastPage(){
+    ajax('/lastPage', 'get', null, res=>{
+      if(res.status){
+        ajax(res.lastPage, 'get', null, lastPage=>{
+          $('#content-container').empty().append(lastPage);
+          renderMenu();
+        });
+      }else{
+        renderUsersNew();
+      }
+    },'json');
   }
 
   function renderLogin(){
@@ -22,6 +35,14 @@
     });
   }
 })();
+
+function renderMenu(){
+  'use strict';
+  console.log('inside client render');
+  ajax('/menu', 'GET', null, res=>{
+    $('#menu-container').empty().append(res);
+  });
+}
 
 function ajax(url, type, data={}, success=r=>console.log(r), dataType='html'){
   'use strict';

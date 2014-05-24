@@ -2,8 +2,20 @@
   'use strict';
   $(document).ready(init);
   function init() {
-    renderUsersNew();
+    getLastPage();
     renderLogin();
+  }
+  function getLastPage() {
+    ajax('/lastPage', 'get', null, (function(res) {
+      if (res.status) {
+        ajax(res.lastPage, 'get', null, (function(lastPage) {
+          $('#content-container').empty().append(lastPage);
+          renderMenu();
+        }));
+      } else {
+        renderUsersNew();
+      }
+    }), 'json');
   }
   function renderLogin() {
     ajax('/login', 'get', null, (function(res) {
@@ -16,6 +28,13 @@
     }));
   }
 })();
+function renderMenu() {
+  'use strict';
+  console.log('inside client render');
+  ajax('/menu', 'GET', null, (function(res) {
+    $('#menu-container').empty().append(res);
+  }));
+}
 function ajax(url, type) {
   'use strict';
   var data = arguments[2] !== (void 0) ? arguments[2] : {};
