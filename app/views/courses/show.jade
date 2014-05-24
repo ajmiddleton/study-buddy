@@ -1,5 +1,14 @@
 h1= course.name
 
+a#addContent(data-id='#{course._id}') Add Course Content
+a#addTest(data-id='#{course._id}') Add Test
+a#addStudents(data-id='#{course._id}') Add Students
+
+script(src='/js/es6/compiled/content-new.js')
+script(src='/js/es6/compiled/tests-new.js')
+script(src='/js/es6/compiled/students-add.js')
+
+
 // Create a new Test
 //    -link to a new route that renders the test form jade partial
 //    -tests/new

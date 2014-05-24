@@ -26,3 +26,21 @@ exports.show = (req, res)=>{
     res.render('courses/show', {course:course});
   });
 };
+
+exports.newContent = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/newContent', {course:course});
+  });
+};
+
+exports.newTest = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/newTest', {course:course});
+  });
+};
+
+exports.addStudents = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/addStudents', {course:course});
+  });
+};
