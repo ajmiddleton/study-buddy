@@ -6,7 +6,8 @@ var _ = require('lodash');
 class User{
   constructor(formData){
     this.email = formData.email;
-    this.password = formData.password;
+    this.password = bcrypt.hashSync(formData.password, 8);
+    this.type = formData.accType;
   }
 
   static create(formData, fn){
@@ -15,9 +16,6 @@ class User{
         fn(null);
       }else{
         var u = new User(formData);
-        u.email = formData.email;
-        u.password = bcrypt.hashSync(formData.password, 8);
-        u.type = formData.accType;
         users.save(u, ()=>fn(u));
       }
     });
