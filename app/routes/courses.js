@@ -37,13 +37,21 @@ exports.newVideo = (req, res)=>{
   });
 };
 
+exports.createVideo = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    course.addVideo(req.body, c=>res.render('courses/show', {course:c}));
+  });
+};
+
 exports.newTest = (req, res)=>{
+  req.session.lastPage = `/courses/${req.params.courseId}/test/new`;
   Course.findById(req.params.courseId, course=>{
     res.render('courses/newTest', {course:course});
   });
 };
 
 exports.addStudents = (req, res)=>{
+  req.session.lastPage = `/courses/${req.params.courseId}/students/add`;
   Course.findById(req.params.courseId, course=>{
     res.render('courses/addStudents', {course:course});
   });
