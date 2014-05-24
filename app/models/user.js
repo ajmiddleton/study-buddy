@@ -67,6 +67,13 @@ class User{
     });
   }
 
+  static findAllStudents(fn){
+    users.find({type:'student'}).toArray((e, students)=>{
+      students = students.map(student=>_.create(User.prototype, student));
+      fn(students);
+    });
+  }
+
 }
 
 module.exports = User;

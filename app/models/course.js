@@ -51,6 +51,12 @@ class Course{
     this.videos = _.reject(this.videos, {title:title});
     courses.save(this, ()=>fn(this));
   }
+
+  addStudents(studentIds, fn){
+    studentIds = studentIds.map(studentId=>Mongo.ObjectID(studentId));
+    this.studentIds.concat(studentIds);
+    courses.save(this, ()=>fn(this));
+  }
 }
 
 module.exports = Course;
