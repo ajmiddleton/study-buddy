@@ -28,7 +28,17 @@
         ajax('/courses', 'get', null, res=>{
           $('#content-container').empty().append(res);
         });
+        renderMenu();
       }
     }, 'json');
   }
+
+  function renderMenu(){
+    console.log('inside client render');
+    ajax('/menu', 'GET', null, res=>{
+      $('#menu-container').empty().append(res);
+    });
+
+  }
+
 })();
