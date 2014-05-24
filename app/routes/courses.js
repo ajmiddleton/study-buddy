@@ -43,6 +43,12 @@ exports.createVideo = (req, res)=>{
   });
 };
 
+exports.destroyVideo = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    course.removeVideoByTitle(req.body.title, c=>res.render('courses/show', {course:c}));
+  });
+};
+
 exports.newTest = (req, res)=>{
   req.session.lastPage = `/courses/${req.params.courseId}/test/new`;
   Course.findById(req.params.courseId, course=>{

@@ -7,6 +7,15 @@
   $('#addVideo').click(addVideo);
   $('#addTest').click(addTest);
   $('#addStudents').click(addStudents);
+  $('.remove-video').click(removeVideo);
+
+  function removeVideo(){
+    var title = $(this).attr('data-title');
+    var courseId = $('#course').attr('data-id');
+    ajax(`/courses/${courseId}/video`, 'delete', {title:title}, res=>{
+      $('#content-container').empty().append(res);
+    });
+  }
 
   function addVideo(){
     var courseId = $('#course').attr('data-id');
