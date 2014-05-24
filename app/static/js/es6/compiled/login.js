@@ -8,6 +8,7 @@
         $('#login-container').empty().append(res.loginHTML);
         ajax('/users/new', 'get', null, (function(res) {
           $('#content-container').empty().append(res);
+          $('#menu-container').empty();
         }));
       }
     }), 'json');
