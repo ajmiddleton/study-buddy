@@ -14,6 +14,12 @@ exports.renderLogin = (req, res)=>{
   });
 };
 
+exports.renderMenu = (req, res)=>{
+  User.findById(req.session.userId, user=>{
+    res.render('users/menu', {user:user});  //the users/menu corresponds with the jade file - users/menu.jade
+  });
+};
+
 exports.create = (req, res)=>{
   User.create(req.body, user=>{
     if(user){

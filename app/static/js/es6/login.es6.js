@@ -22,7 +22,17 @@
     ajax('/login', 'post', {email:email, password:password}, res=>{
       if(res.status){
         $('#login-container').empty().append(res.loginHTML);
+        renderMenu();
       }
     }, 'json');
   }
+
+  function renderMenu(){
+    console.log('inside client render');
+    ajax('/menu', 'GET', null, res=>{
+      $('#menu-container').empty().append(res);
+    });
+
+  }
+
 })();

@@ -26,6 +26,8 @@ function load(app, fn){
   app.post('/login', dbg, users.login);
   app.get('/logout', dbg, users.logout);
 
+  app.get('/menu', dbg, users.renderMenu);
+
 
   console.log('Routes Loaded');
   fn();

@@ -1,6 +1,7 @@
 var users = global.nss.db.collection('users');
 var Mongo = require('mongodb');
 var bcrypt = require('bcrypt');
+var _ = require('lodash');
 
 class User{
   constructor(formData){
@@ -36,9 +37,18 @@ class User{
     });
   }
 
+  get isTeacher(){
+    return this.type === 'teacher';
+  }
+
+  get isStudent(){
+    return this.type === 'student';
+  }
+
   static findByEmail(email, fn){
     users.findOne({email:email}, (e, user)=>{
       if(user){
+        user = _.create(User.prototype, user);
         fn(user);
       }else{
         fn(null);
@@ -50,6 +60,7 @@ class User{
     userId = Mongo.ObjectID(userId);
     users.findOne({_id:userId}, (e, user)=>{
       if(user){
+        user = _.create(User.prototype, user);
         fn(user);
       }else{
         fn(null);
