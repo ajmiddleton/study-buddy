@@ -4,12 +4,32 @@
 (function(){
   'use strict';
 
-  $('#course-add-video').click(addVideo);
+  $('#addVideo').click(addVideo);
+  $('#addTest').click(addTest);
+  $('#addStudents').click(addStudents);
 
   function addVideo(){
     var courseId = $('#course').attr('data-id');
     ajax(`/courses/${courseId}/newVideo`, 'get', null, res=>{
       $('#content-container').empty().append(res);
     });
+  }
+
+  function addTest(event){
+    var courseId = $(this).attr('data-id');
+    ajax(`/courses/${courseId}/test/new`, 'get', null, res=>{
+      $('#content-container').empty().append(res);
+    });
+
+    event.preventDefault();
+  }
+
+  function addStudents(event){
+    var courseId = $(this).attr('data-id');
+    ajax(`/courses/${courseId}/students/add`, 'get', null, res=>{
+      $('#content-container').empty().append(res);
+    });
+
+    event.preventDefault();
   }
 })();

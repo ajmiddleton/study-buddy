@@ -34,6 +34,8 @@ function load(app, fn){
   app.post('/courses', dbg, courses.create);
   app.get('/courses/:courseId', dbg, courses.show);
   app.get('/courses/:courseId/newVideo', dbg, courses.newVideo);
+  app.get('/courses/:courseId/test/new', dbg, courses.newTest);
+  app.get('/courses/:courseId/students/add', dbg, courses.addStudents);
 
 
   console.log('Routes Loaded');

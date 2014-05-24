@@ -36,3 +36,15 @@ exports.newVideo = (req, res)=>{
     res.render('courses/newVideo', {course:course});
   });
 };
+
+exports.newTest = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/newTest', {course:course});
+  });
+};
+
+exports.addStudents = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    res.render('courses/addStudents', {course:course});
+  });
+};
