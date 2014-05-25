@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var Course = traceur.require(__dirname + '/../models/course.js');
+var User = traceur.require(__dirname + '/../models/user.js');
 
 exports.new = (req, res)=>{
   req.session.lastPage = '/courses/new';
@@ -45,6 +46,8 @@ exports.newTest = (req, res)=>{
 
 exports.addStudents = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
-    res.render('courses/addStudents', {course:course});
+    User.findAllStudents(students=>{
+      res.render('courses/addStudents', {course:course, students:students});
+    });
   });
 };

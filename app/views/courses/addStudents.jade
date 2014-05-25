@@ -1,1 +1,9 @@
-h1 Add Students to a Course
+h1
+  a.course(data-id='#{course._id}') #{course.name}
+h2 Add Students to a Course
+
+form
+  for each student in students
+    input(type='checkbox', name='#{student.email}', value='#{student._id}') ${student.email}
+
+script(src='/js/es6/compiled/courses-addStudents.js')
