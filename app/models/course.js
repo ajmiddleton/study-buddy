@@ -47,14 +47,18 @@ class Course{
     courses.save(this, ()=>fn(this));
   }
 
+  findVideoByUrl(link){
+    return _(this.videos).find({link:link});
+  }
+
   removeVideoByTitle(title, fn){
     this.videos = _.reject(this.videos, {title:title});
     courses.save(this, ()=>fn(this));
   }
 
   addStudents(studentIds, fn){
-    studentIds = studentIds.map(studentId=>Mongo.ObjectID(studentId));
-    this.studentIds.concat(studentIds);
+    studentIds = _([studentIds]).flatten().map(studentId=>Mongo.ObjectID(studentId));
+    this.studentIds = this.studentIds.concat(studentIds);
     courses.save(this, ()=>fn(this));
   }
 }

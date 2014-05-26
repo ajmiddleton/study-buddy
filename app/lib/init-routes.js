@@ -34,10 +34,12 @@ function load(app, fn){
   app.post('/courses', dbg, courses.create);
   app.get('/courses/:courseId', dbg, courses.show);
   app.get('/courses/:courseId/newVideo', dbg, courses.newVideo);
+  app.get('/courses/:courseId/showVideo', dbg, courses.showVideo);
   app.post('/courses/:courseId/video', dbg, courses.createVideo);
   app.delete('/courses/:courseId/video', dbg, courses.destroyVideo);
   app.get('/courses/:courseId/test/new', dbg, courses.newTest);
   app.get('/courses/:courseId/students/add', dbg, courses.addStudents);
+  app.put('/courses/:courseId/students/add', dbg, courses.assignStudents);
 
 
   console.log('Routes Loaded');

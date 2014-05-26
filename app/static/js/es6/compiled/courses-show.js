@@ -4,6 +4,7 @@
   $('#addTest').click(addTest);
   $('#addStudents').click(addStudents);
   $('.remove-video').click(removeVideo);
+  $('.showVideo').click(showVideo);
   function removeVideo() {
     var title = $(this).attr('data-title');
     var courseId = $('#course').attr('data-id');
@@ -30,6 +31,13 @@
       $('#content-container').empty().append(res);
     }));
     event.preventDefault();
+  }
+  function showVideo() {
+    var courseId = $(this).attr('data-id');
+    var link = $(this).attr('data-url');
+    ajax(("/courses/" + courseId + "/showVideo"), 'get', link, (function(res) {
+      $('#content-container').empty().append(res);
+    }));
   }
 })();
 

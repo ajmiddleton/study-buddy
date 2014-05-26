@@ -2,9 +2,11 @@ h1
   a.course(data-id='#{course._id}') #{course.name}
 h2 Add Students to a Course
 
-form
+button.button.button-action.add-students Add Students
+form.from-horizontal#students
   each student in students
-    input(type='checkbox', name='#{student.email}', value='#{student._id}')
-    label #{student.email}
+    .form-group
+      input(type='checkbox', name='students', value='#{student._id}')
+      label #{student.email}
 
 script(src='/js/es6/compiled/courses-addStudents.js')

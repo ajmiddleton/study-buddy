@@ -38,6 +38,18 @@ exports.newVideo = (req, res)=>{
   });
 };
 
+exports.showVideo = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    var video = course.findVideoByUrl(req.query.link);
+    video.embedLink = video.link.split('=')[1];
+    console.log('COURSE');
+    console.log(course);
+    console.log('VIDEO');
+    console.log(video);
+    res.render('courses/showVideo', {course:course, video:video});
+  });
+};
+
 exports.createVideo = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
     course.addVideo(req.body, c=>res.render('courses/show', {course:c}));
@@ -62,6 +74,14 @@ exports.addStudents = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
     User.findAllStudents(students=>{
       res.render('courses/addStudents', {course:course, students:students});
+    });
+  });
+};
+
+exports.assignStudents = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    course.addStudents(req.body.students, c=>{
+      res.render('courses/show', {course:c});
     });
   });
 };
