@@ -53,8 +53,8 @@ class Course{
   }
 
   addStudents(studentIds, fn){
-    studentIds = studentIds.map(studentId=>Mongo.ObjectID(studentId));
-    this.studentIds.concat(studentIds);
+    studentIds = _([studentIds]).flatten().map(studentId=>Mongo.ObjectID(studentId));
+    this.studentIds = this.studentIds.concat(studentIds);
     courses.save(this, ()=>fn(this));
   }
 }

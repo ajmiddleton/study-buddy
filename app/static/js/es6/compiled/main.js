@@ -30,7 +30,6 @@
 })();
 function renderMenu() {
   'use strict';
-  console.log('inside client render');
   ajax('/menu', 'GET', null, (function(res) {
     $('#menu-container').empty().append(res);
   }));

@@ -38,6 +38,7 @@ function load(app, fn){
   app.delete('/courses/:courseId/video', dbg, courses.destroyVideo);
   app.get('/courses/:courseId/test/new', dbg, courses.newTest);
   app.get('/courses/:courseId/students/add', dbg, courses.addStudents);
+  app.put('/courses/:courseId/students/add', dbg, courses.assignStudents);
 
 
   console.log('Routes Loaded');

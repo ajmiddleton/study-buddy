@@ -38,7 +38,6 @@
 
 function renderMenu(){
   'use strict';
-  console.log('inside client render');
   ajax('/menu', 'GET', null, res=>{
     $('#menu-container').empty().append(res);
   });

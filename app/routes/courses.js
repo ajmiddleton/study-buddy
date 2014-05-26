@@ -65,3 +65,11 @@ exports.addStudents = (req, res)=>{
     });
   });
 };
+
+exports.assignStudents = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    course.addStudents(req.body.students, c=>{
+      res.render('courses/show', {course:c});
+    });
+  });
+};
