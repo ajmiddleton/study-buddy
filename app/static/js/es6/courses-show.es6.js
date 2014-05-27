@@ -22,7 +22,9 @@
     var title = $(this).attr('data-title');
     var courseId = $('#course').attr('data-id');
     ajax(`/courses/${courseId}/video`, 'delete', {title:title}, res=>{
-      $('#content-container').empty().append(res);
+      ajax(`/courses/${courseId}`, 'get', null, res=>{
+        $('#content-container').empty().append(res);
+      });
     });
   }
 

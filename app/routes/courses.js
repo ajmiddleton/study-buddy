@@ -67,13 +67,13 @@ exports.showVideo = (req, res)=>{
 
 exports.createVideo = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
-    course.addVideo(req.body, c=>res.render('courses/show', {course:c}));
+    course.addVideo(req.body, c=>res.send({status:1}));
   });
 };
 
 exports.destroyVideo = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
-    course.removeVideoByTitle(req.body.title, c=>res.render('courses/show', {course:c}));
+    course.removeVideoByTitle(req.body.title, c=>res.send({status:1}));
   });
 };
 
