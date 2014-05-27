@@ -5,6 +5,7 @@
   $('#addStudents').click(addStudents);
   $('.remove-video').click(removeVideo);
   $('.test-link').click(showTest);
+  $('.showVideo').click(showVideo);
   function showTest() {
     var testId = $(this).attr('data-id');
     ajax(("/tests/" + testId), 'get', null, (function(res) {
@@ -37,6 +38,13 @@
       $('#content-container').empty().append(res);
     }));
     event.preventDefault();
+  }
+  function showVideo() {
+    var courseId = $(this).attr('data-id');
+    var link = $(this).attr('data-url');
+    ajax(("/courses/" + courseId + "/showVideo"), 'get', {link: link}, (function(res) {
+      $('#content-container').empty().append(res);
+    }));
   }
 })();
 

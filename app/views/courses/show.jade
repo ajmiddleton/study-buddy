@@ -8,8 +8,8 @@ if user.isTeacher
 if course.videos.length
   h3 Videos
   each video in course.videos
-    h4 Title: #{video.title}
-    h4 Link: #{video.link}
+    h4 Title:&nbsp
+      a.showVideo(data-id='#{course._id}', data-url='#{video.link}') #{video.title}
     button.button.button-small.button-caution.remove-video(data-title='#{video.title}') Remove Video
 
 if tests.length

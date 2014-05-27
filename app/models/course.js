@@ -49,6 +49,10 @@ class Course{
     courses.save(this, ()=>fn(this));
   }
 
+  findVideoByUrl(link){
+    return _(this.videos).find({link:link});
+  }
+
   removeVideoByTitle(title, fn){
     this.videos = _.reject(this.videos, {title:title});
     courses.save(this, ()=>fn(this));

@@ -56,6 +56,15 @@ exports.newVideo = (req, res)=>{
   });
 };
 
+exports.showVideo = (req, res)=>{
+  Course.findById(req.params.courseId, course=>{
+    console.log(req.query);
+    var video = course.findVideoByUrl(req.query.link);
+    video.embedLink = video.link.split('=')[1];
+    res.render('courses/showVideo', {course:course, video:video});
+  });
+};
+
 exports.createVideo = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
     course.addVideo(req.body, c=>res.render('courses/show', {course:c}));
