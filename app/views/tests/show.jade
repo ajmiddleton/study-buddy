@@ -1,0 +1,13 @@
+a.course(data-id='#{course._id}')
+  h1= course.name
+h2= test.title
+
+form#test
+  each question in questions
+    .panel.panel-primary
+      .panel-heading= question.text
+      each answer in question.answers
+        .panel-body= answer.text
+          input.pull-right(type='checkbox', name='answer')
+
+script(src='/js/es6/compiled/tests-show.js')

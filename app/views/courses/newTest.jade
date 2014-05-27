@@ -1,5 +1,28 @@
 h1
   a.course(data-id='#{course._id}') #{course.name}
-h2 Add a Test
+button.button.button-action.add-question Add Question
+button.button.button-action.submit-test Save Test
+
+form.form-horizontal#newTest(style='margin-top:10px;')
+  .form-group
+    input(type='text', name='testName', placeholder='Test Name')
+  .question
+    textarea.form-control(type='text', rows='3', name='questionText', placeholder='Question Text')
+    .answer.form-group
+      input(type='text', name='answerText', placeholder='Answer Text')
+      input(type='checkbox', name='correctAnswer')
+      label isCorrect
+    .answer.form-group
+      input(type='text', name='answerText', placeholder='Answer Text')
+      input(type='checkbox', name='correctAnswer')
+      label isCorrect
+    .answer.form-group
+      input(type='text', name='answerText', placeholder='Answer Text')
+      input(type='checkbox', name='correctAnswer')
+      label isCorrect
+    .answer.form-group
+      input(type='text', name='answerText', placeholder='Answer Text')
+      input(type='checkbox', name='correctAnswer')
+      label isCorrect
 
   script(src='/js/es6/compiled/courses-newTest.js')

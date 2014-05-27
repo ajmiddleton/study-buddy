@@ -25,8 +25,10 @@ class Course{
 
   static findByStudent(studentId, fn){
     studentId = Mongo.ObjectID(studentId);
-    courses.find({studentIds: {$elemMatch:studentId}}).toArray((err, records)=>{
-      records = records.map(course=>_.create(Course.prototype, course));
+    courses.find({studentIds:studentId}).toArray((err, records)=>{
+      if(records){
+        records = records.map(course=>_.create(Course.prototype, course));
+      }
       fn(records);
     });
   }
@@ -53,7 +55,7 @@ class Course{
   }
 
   addStudents(studentIds, fn){
-    studentIds = _([studentIds]).flatten().map(studentId=>Mongo.ObjectID(studentId));
+    studentIds = _([studentIds]).flatten().map(studentId=>Mongo.ObjectID(studentId)).valueOf();
     this.studentIds = this.studentIds.concat(studentIds);
     courses.save(this, ()=>fn(this));
   }

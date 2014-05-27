@@ -4,12 +4,11 @@ var questions = global.nss.db.collection('questions');
 var Mongo = require('mongodb');
 
 class Question{
-  constructor(teacherId, testId, text, answers, tags){
+  constructor(teacherId, testId, text, answers){
     this.teacherId = teacherId;
     this.testId = testId;
     this.text = text;
     this.answers = answers;
-    this.tags = tags;
   }
 
   static findById(questionId, fn){
@@ -26,9 +25,13 @@ class Question{
     });
   }
 
-  create(formData, fn){
-    var q = new Question(formData.teacherId, formData.testId, formData.text, formData.answers, formData.tags);
+  create(teacherId, testId, text, answers, fn){
+    var q = new Question(teacherId, testId, text, answers);
     questions.save(q, ()=>fn(q));
+  }
+
+  save(fn){
+    questions.save(this, ()=>fn(this));
   }
 }
 

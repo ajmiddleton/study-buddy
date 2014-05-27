@@ -4,10 +4,10 @@ var tests = global.nss.db.collection('tests');
 var Mongo = require('mongodb');
 
 class Test{
-  constructor(teacherId, courseId, tags){
+  constructor(teacherId, courseId, title){
+    this.title = title;
     this.teacherId = teacherId;
     this.courseId = courseId;
-    this.tags = tags;
   }
 
   static findById(testId, fn){
@@ -31,8 +31,10 @@ class Test{
     });
   }
 
-  create(formData, fn){
-    var t = new Test(formData.teacherId, formData.tags);
+  static create(teacherId, courseId, title,  fn){
+    teacherId = Mongo.ObjectID(teacherId);
+    courseId = Mongo.ObjectID(courseId);
+    var t = new Test(teacherId, courseId, title);
     tests.save(t, ()=>fn(t));
   }
 }

@@ -8,6 +8,14 @@
   $('#addTest').click(addTest);
   $('#addStudents').click(addStudents);
   $('.remove-video').click(removeVideo);
+  $('.test-link').click(showTest);
+
+  function showTest(){
+    var testId = $(this).attr('data-id');
+    ajax(`/tests/${testId}`, 'get', null, res=>{
+      $('#content-container').empty().append(res);
+    });
+  }
 
   function removeVideo(){
     var title = $(this).attr('data-title');
