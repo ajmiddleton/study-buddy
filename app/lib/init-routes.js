@@ -44,6 +44,8 @@ function load(app, fn){
   app.put('/courses/:courseId/students/add', dbg, courses.assignStudents);
 
   app.get('/tests/:testId', dbg, tests.show);
+  app.delete('/tests/:testId', dbg, tests.destroy);
+  app.post('/tests/:testId/score', dbg, tests.score);
 
   console.log('Routes Loaded');
   fn();

@@ -10,12 +10,15 @@ if course.videos.length
   each video in course.videos
     h4 Title:&nbsp
       a.showVideo(data-id='#{course._id}', data-url='#{video.link}') #{video.title}
-    button.button.button-small.button-caution.remove-video(data-title='#{video.title}') Remove Video
+    if user.isTeacher
+      button.button.button-small.button-caution.remove-video(data-title='#{video.title}') Remove Video
 
 if tests.length
   h3 Tests
   each test in tests
     a.test-link(data-id='#{test._id}')
       h4 #{test.title}
+    if user.isTeacher
+      button.button.button-small.button-caution.remove-test(data-id='#{test._id}') Remove Test
 
 script(src='/js/es6/compiled/courses-show.js')

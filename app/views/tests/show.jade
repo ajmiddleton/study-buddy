@@ -8,6 +8,7 @@ form#test
       .panel-heading= question.text
       each answer in question.answers
         .panel-body= answer.text
-          input.pull-right(type='checkbox', name='answer')
+          input.pull-right(type='checkbox', name='answers', value='#{question._id}-#{answer.text}')
+button.button.button-action.submit-test(data-id='#{test._id}') Submit Test
 
 script(src='/js/es6/compiled/tests-show.js')

@@ -6,6 +6,16 @@
   $('.remove-video').click(removeVideo);
   $('.test-link').click(showTest);
   $('.showVideo').click(showVideo);
+  $('.remove-test').click(removeTest);
+  function removeTest() {
+    var testId = $(this).attr('data-id');
+    var courseId = $('.course').attr('data-id');
+    ajax(("/tests/" + testId), 'delete', null, (function(res) {
+      ajax(("/courses/" + courseId), 'get', null, (function(res) {
+        $('#content-container').empty().append(res);
+      }));
+    }));
+  }
   function showTest() {
     var testId = $(this).attr('data-id');
     ajax(("/tests/" + testId), 'get', null, (function(res) {

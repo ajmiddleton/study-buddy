@@ -2,6 +2,7 @@
 
 var tests = global.nss.db.collection('tests');
 var Mongo = require('mongodb');
+var _ = require('lodash');
 
 class Test{
   constructor(teacherId, courseId, title){
@@ -13,6 +14,7 @@ class Test{
   static findById(testId, fn){
     testId = Mongo.ObjectID(testId);
     tests.findOne({_id:testId}, (e, test)=>{
+      test = _.create(Test.prototype, test);
       fn(test);
     });
   }
@@ -36,6 +38,11 @@ class Test{
     courseId = Mongo.ObjectID(courseId);
     var t = new Test(teacherId, courseId, title);
     tests.save(t, ()=>fn(t));
+  }
+
+  static removeById(testId, fn){
+    testId = Mongo.ObjectID(testId);
+    tests.remove({_id:testId}, ()=>fn());
   }
 }
 

@@ -1,6 +1,7 @@
 .well
   .list-group
     a#menu-courses.list-group-item Courses
-    a#menu-new-course.list-group-item New Course
+    if user.isTeacher
+      a#menu-new-course.list-group-item New Course
 
 script(src='/js/es6/compiled/users-menu.js')

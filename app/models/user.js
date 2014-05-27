@@ -17,10 +17,14 @@ class User{
         var u = new User(formData);
         u.password = bcrypt.hashSync(u.password, 8);
         u.type = formData.accType;
+        u.scores = [];
         users.save(u, ()=>fn(u));
       }
     });
+  }
 
+  save(fn){
+    users.save(this, ()=>fn(this));
   }
 
   get isStudent(){
