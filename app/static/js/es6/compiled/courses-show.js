@@ -35,7 +35,7 @@
   function showVideo() {
     var courseId = $(this).attr('data-id');
     var link = $(this).attr('data-url');
-    ajax(("/courses/" + courseId + "/showVideo"), 'get', link, (function(res) {
+    ajax(("/courses/" + courseId + "/showVideo"), 'get', {link: link}, (function(res) {
       $('#content-container').empty().append(res);
     }));
   }

@@ -40,12 +40,9 @@ exports.newVideo = (req, res)=>{
 
 exports.showVideo = (req, res)=>{
   Course.findById(req.params.courseId, course=>{
+    console.log(req.query);
     var video = course.findVideoByUrl(req.query.link);
     video.embedLink = video.link.split('=')[1];
-    console.log('COURSE');
-    console.log(course);
-    console.log('VIDEO');
-    console.log(video);
     res.render('courses/showVideo', {course:course, video:video});
   });
 };

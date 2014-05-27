@@ -7,10 +7,8 @@ button.button.button-action#addStudents(data-id='#{course._id}') Add Students
 if course.videos.length
   h3 Videos
   each video in course.videos
-    h4 Title:
+    h4 Title:&nbsp
       a.showVideo(data-id='#{course._id}', data-url='#{video.link}') #{video.title}
-      a.showVideo(data-id='#{course._id}', data-url='test') Test
-    h4 Link: #{video.link}
     button.button.button-small.button-caution.remove-video(data-title='#{video.title}') Remove Video
 
 script(src='/js/es6/compiled/courses-show.js')
